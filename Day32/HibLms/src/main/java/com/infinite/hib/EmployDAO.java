@@ -33,15 +33,16 @@ public class EmployDAO {
 		return employList.get(0);
 	}
 	
-	public LeaveHistory searchLeave(int empId) {
+	//SerachLeave
+	
+	public List<LeaveHistory> searchLeave(int empId) {
 		sessionFactory = SessionHelper.getSession();
   	    Session session=sessionFactory.openSession();  
 		Query query = session.getNamedQuery("searchLeave");
 		query.setParameter("empId",empId);   
 		List<LeaveHistory> leaveList = query.list();
-		if (leaveList.size()==0) {
-			return null;
-		} 
-		return leaveList.get(0);
+		return leaveList;
 	}
+	
+	
 }
